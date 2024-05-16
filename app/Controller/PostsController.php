@@ -5,7 +5,8 @@
 		public $components = array('Flash');
 
 		public function index() {
-			$this->set('posts', $this->Post->find('all'));
+			$order = "Post.title asc";
+			$this->set('posts', $this->Post->find('all', compact('order')));
 		}
 
 		public function view($id) {
@@ -24,10 +25,10 @@
 			if ($this->request->is('post')) {
 				$this->Post->create();
 				if ($this->Post->save($this->request->data)) {
-					$this->Flash->success(__('Your post has been saved.'));
+					$this->Flash->success(__('Seu post foi publicado com sucesso!'));
 					return $this->redirect(array('action' => 'index'));
 				}
-				$this->Flash->error(__('Unable to add your post.'));
+				$this->Flash->error(__('Houve um erro, por favor, tente novamente.'));
 			}
 		}
 
