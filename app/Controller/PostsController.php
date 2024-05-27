@@ -5,7 +5,7 @@
 		public $components = array('Flash');
 
 		public function index() {
-			$order = "Post.title asc";
+			$order = "Post.id asc";
 			$this->set('posts', $this->Post->find('all', compact('order')));
 		}
 
