@@ -14,14 +14,14 @@
 				$post['Post']['title'],
 				array('action' => 'view', $post['Post']['id'])
 			),
+			$this->Html->link(
+				'Editar',
+				array('action' => 'edit', $post['Post']['id'])
+			) . ' ' .
 			$this->Form->postLink(
 				'Apagar',
 				array('action' => 'delete', $post['Post']['id']),
 				array('confirm' => 'Are you sure?')
-			) . ' ' .
-			$this->Html->link(
-				'Editar',
-				array('action' => 'edit', $post['Post']['id'])
 			),
 			$post['Post']['created']
 		);
