@@ -35,14 +35,11 @@ class AppController extends Controller {
 		'Flash',
 		'Auth' => array(
 			'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
-			'logoutRedirect' => array(
-				'controller' => 'pages',
-				'action' => 'display',
-				'home'
-			),
+			'logoutRedirect' => array('controller' => 'posts', 'action' => 'index'),
+			'authError' => 'Você não tem permissão para acessar esta página.',
 			'authenticate' => array(
 				'Form' => array(
-					'passwordHasher' => 'Blowfish'
+					'passwordHasher' => 'Simple'
 				)
 			),
 			'authorize' => array('Controller') // Added this line

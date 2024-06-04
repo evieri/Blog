@@ -12,7 +12,7 @@ class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
-				return $this->redirect($this->Auth->redirectUrl());
+				return $this->redirect('/');
 			}
 			$this->Flash->error(__('Invalid username or password, try again'));
 		}
@@ -23,6 +23,17 @@ class UsersController extends AppController {
 	}
 
 	public function index() {
+		if ($this->Auth->user()) {
+			// Verifica se o usuário logado é um administrador
+			if ($this->Auth->user('role') !== 'admin') {
+				$this->Flash->error(__('Você não tem permissão para acessar esta página.'));
+				return $this->redirect(array('action' => 'index', 'controller' => 'posts'));
+			}
+		} else {
+			$this->Flash->error(__('Você precisa estar logado para acessar esta página.'));
+			return $this->redirect($this->Auth->loginAction);
+		}
+
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
