@@ -34,9 +34,9 @@ class AppController extends Controller {
 	public $components = array(
 		'Flash',
 		'Auth' => array(
+			'flash' => array('element' => 'error', 'clear' => 'true'),
 			'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
-			'logoutRedirect' => array('controller' => 'posts', 'action' => 'index'),
-			'authError' => 'Você não tem permissão para acessar esta página.',
+			'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
 			'authenticate' => array(
 				'Form' => array(
 					'passwordHasher' => 'Simple'
@@ -57,6 +57,7 @@ class AppController extends Controller {
 		}
 
 		// Default deny
+		$this->Flash->error(__('Você não tem permissão para acessar esta página.'));
 		return false;
 	}
 }
