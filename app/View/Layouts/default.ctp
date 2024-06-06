@@ -25,10 +25,10 @@
 
 		<div class="nav__actions">
 			<!-- Pesquisa -->
-			<i class="ri-search-line" id="search-btn"></i>
+			<i class="ri-search-line" id="search-btn" data-bs-toggle="modal" data-bs-target="#modalSearch"></i>
 
 			<!-- Login -->
-			<i class="ri-user-line nav__login" id="login-btn"></i>
+			<i class="ri-user-line nav__login" id="login-btn" data-bs-toggle="modal" data-bs-target="#modalSignin"></i>
 
 			<!-- Sanduíche -->
 <!--			<div class="nav__toggle" id="nav-toggle">-->
@@ -39,24 +39,40 @@
 </header>
 
 <!--==================== SEARCH ====================-->
-
-<!--==================== LOGIN ====================-->
-<div class="card text-center" style="width: 18rem;">
-	<div class="card-body">
-		<h5 class="card-title">Login</h5>
-		<form>
-			<div class="mb-3">
-				<label for="" class="form-label">Email</label>
-				<input type="email" class="form-control" id="">
+<div class="modal fade" id="modalSearch">
+	<div class="modal-dialog d-flex justify-content-center">
+		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+		<form class="">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control rounded-3" id="floatingInput" placeholder="O que você está procurando?">
 			</div>
-			<div class="mb-3">
-				<label for="" class="form-label">Password</label>
-				<input type="password" class="form-control" id="">
-				<div id="" class="form-text">Não tem conta? <a href="#">Crie uma</a></div>
-			</div>
-			<button type="submit" class="btn btn-primary">Entrar</button>
 		</form>
-		<a href="#" class="btn btn-primary">Go somewhere</a>
+	</div>
+</div>
+<!--==================== MODAL LOGIN ====================-->
+<div class="modal text-center fade" role="dialog" id="modalSignin">
+	<div style="top: 20%" class="modal-dialog" role="document">
+		<div class="modal-content rounded-4 shadow">
+			<div class="modal-header p-5 pb-4 border-bottom-0">
+				<h1 class="fw-bold mb-0 fs-2">Faça Login</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+			</div>
+
+			<div class="modal-body p-5 pt-0">
+				<form class="">
+					<div class="form-floating mb-3">
+						<input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+						<label for="floatingInput">Usuário</label>
+					</div>
+					<div class="form-floating mb-3">
+						<input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+						<label for="floatingPassword">Senha</label>
+					</div>
+					<small class="text-body-secondary">Não tem uma conta? <a href="#">Inscreva-se.</a></small>
+					<button class="w-100 mt-3 btn btn-lg rounded-3 btn-primary" type="submit">Entrar</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
 <!--==================== MAIN ====================-->
