@@ -1,6 +1,6 @@
 <h1>Blog posts</h1>
 <p><a href="/posts/add" >Criar post</a></p>
-
+<p><a href="/users/" >Usuários</a></p>
 <?php
 	$tHeader = array('Id', 'Título', 'Ação', 'Data de criação');
 	$header = $this->Html->tableHeaders($tHeader);

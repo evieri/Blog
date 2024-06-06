@@ -4,3 +4,4 @@
 
 <p><?php echo h($post['Post']['body']); ?></p>
 
+<img src="../../webroot/img/bg-image.png" alt="">

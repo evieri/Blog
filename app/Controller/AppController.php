@@ -35,6 +35,7 @@ class AppController extends Controller {
 		'Flash',
 		'Auth' => array(
 			'flash' => array('element' => 'error', 'clear' => 'true'),
+			'authError' => 'Você não está autorizado a acessar essa área.',
 			'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
 			'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
 			'authenticate' => array(
@@ -48,6 +49,7 @@ class AppController extends Controller {
 
 	public function beforeFilter() {
 		$this->Auth->allow('index', 'view');
+
 	}
 
 	public function isAuthorized($user) {
