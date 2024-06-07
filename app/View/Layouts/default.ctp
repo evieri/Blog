@@ -15,50 +15,54 @@
 	<?php echo $this->Html->css('style.css'); ?>
 	<?php echo $this->fetch('css'); ?>
 </head>
-<body class="bg-primary">
+<body>
 <!--==================== HEADER ====================-->
-<header class="header bg-white shadow">
-	<nav class="navbar p-4">
+<header class="header bg-white shadow fs-5">
+	<nav class="navbar p-4 navbar-expand-sm">
 
 		<!-- Logo -->
-		<a href="/" class="navbar brand">Logo</a>
+		<div class="container">
+			<a href="/" class="navbar brand">Logo</a>
 
-		<div class="nav__actions">
-			<!-- Pesquisa -->
-			<i class="ri-search-line" id="search-btn" data-bs-toggle="modal" data-bs-target="#modalSearch"></i>
+			<div class="navbar-nav">
+				<!-- Pesquisa -->
+				<i class="ri-search-line nav-link" id="search-btn" data-bs-toggle="modal" data-bs-target="#modalSearch"></i>
 
-			<!-- Login -->
-			<i class="ri-user-line nav__login" id="login-btn" data-bs-toggle="modal" data-bs-target="#modalSignin"></i>
+				<!-- Login -->
+				<i class="ri-user-line nav-link" data-bs-toggle="modal" data-bs-target="#modalSignin"></i>
 
-			<!-- Sanduíche -->
-<!--			<div class="nav__toggle" id="nav-toggle">-->
-<!--				<i class="ri-menu-line"></i>-->
-<!--			</div>-->
+				<!-- Sanduíche -->
+	<!--			<div class="nav__toggle" id="nav-toggle">-->
+	<!--				<i class="ri-menu-line"></i>-->
+	<!--			</div>-->
+			</div>
 		</div>
 	</nav>
 </header>
 
-<!--==================== SEARCH ====================-->
-<div class="modal fade" id="modalSearch">
-	<div class="modal-dialog d-flex justify-content-center">
-		<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-		<form class="">
-			<div class="form-floating mb-3">
-				<input type="text" class="form-control rounded-3" id="floatingInput" placeholder="O que você está procurando?">
+<!--==================== MODAL SEARCH ====================-->
+<div class="modal fade" style="backdrop-filter: blur(24px)" id="modalSearch">
+	<div class="modal-dialog">
+		<div class="modal-content bg-transparent border-0">
+		<button type="button" class="btn-close mt-5 mb-5 m-auto" data-bs-dismiss="modal"></button>
+		<form class="container">
+			<div class="input-group">
+				<input type="text" class="form-control rounded-3 shadow" id="floatingInput" placeholder="O que você está procurando?">
 			</div>
 		</form>
+		</div>
 	</div>
 </div>
 <!--==================== MODAL LOGIN ====================-->
-<div class="modal text-center fade" role="dialog" id="modalSignin">
-	<div style="top: 20%" class="modal-dialog" role="document">
+<div style="backdrop-filter: blur(24px)" class="modal text-center fade" role="dialog" id="modalSignin">
+	<button type="button" class="btn-close m-auto mt-5 mb-5" data-bs-dismiss="modal"></button>
+	<div style="top: 5%; backdrop-filter: blur(50px)" class="modal-dialog" role="document">
 		<div class="modal-content rounded-4 shadow">
 			<div class="modal-header p-5 pb-4 border-bottom-0">
-				<h1 class="fw-bold mb-0 fs-2">Faça Login</h1>
-				<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				<h1 class="fw-bold mb-0 fs-3 m-auto">Faça Login</h1>
 			</div>
 
-			<div class="modal-body p-5 pt-0">
+			<div class="modal-body p-4">
 				<form class="">
 					<div class="form-floating mb-3">
 						<input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
@@ -69,7 +73,7 @@
 						<label for="floatingPassword">Senha</label>
 					</div>
 					<small class="text-body-secondary">Não tem uma conta? <a href="#">Inscreva-se.</a></small>
-					<button class="w-100 mt-3 btn btn-lg rounded-3 btn-primary" type="submit">Entrar</button>
+					<button class="w-100 mb-4 mt-3 btn btn-lg rounded-3 btn-primary" type="submit">Entrar</button>
 				</form>
 			</div>
 		</div>
@@ -77,7 +81,7 @@
 </div>
 <!--==================== MAIN ====================-->
 <!--<img src="--><?php //echo $this->webroot; ?><!--img/bg-image.png" alt="" class="vh-100">-->
-<main class="container d-flex justify-content-center bg-white">
+<main class="container mt-4 p-4 pt-0 glass">
 	<div>
 		<?php echo $this->Flash->render(); ?>
 		<?php echo $this->fetch('content'); ?>
