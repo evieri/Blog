@@ -1,11 +1,9 @@
 <?php
 
-	$first = $this->Paginator->first();
-	$prev = $this->Paginator->prev();
-	$next = $this->Paginator->next();
-	$last = $this->Paginator->last();
-	$paginate = $this->Paginator->link('8 por página', array('controller' => 'posts', 'action' => 'index' ,'limit' => 8));
-	$paginate .= $this->Html->para('', $paginate);
+	$first = $this->Paginator->first('<<', array('class' => 'btn btn-outline-secondary m-1'), '<<', array('class' => 'btn btn-secondary m-1'));
+	$prev = $this->Paginator->prev('Anterior', array('class' => 'btn btn-outline-secondary m-1'), 'Anterior', array('class' => 'btn btn-secondary m-1'));
+	$next = $this->Paginator->next('Próximo', array('class' => 'btn btn-outline-secondary m-1'), 'Próximo', array('class' => 'btn btn-secondary m-1'));
+	$last = $this->Paginator->last('>>', array('class' => 'btn btn-outline-secondary m-1'), '>>', array('class' => 'btn btn-secondary m-1'));
 
 ?>
 
@@ -13,6 +11,9 @@
 	<h1>Blog posts</h1>
 
 	<div class="dropdown">
+
+		<button type="button" class="btn btn-sm btn-outline-secondary" href="/posts/add" >Criar post</button>
+		<button type="button" class="btn btn-sm btn-outline-secondary m-1" href="/users/" >Usuários</button>
 
 		<div class="btn-group" role="group">
 
@@ -43,9 +44,6 @@
 <!--		</button>-->
 <!--	</div>-->
 </div>
-
-<p><a href="/posts/add" >Criar post</a></p>
-<p><a href="/users/" >Usuários</a></p>
 
 <div class="container">
 	<?php $count = 0; ?>
@@ -90,23 +88,6 @@
 </div>
 <?php endif; ?>
 
-<?php
-	function paginationButton($label, $content) {
-		if (strpos($content, '<a') !== false) {
-			return '<button class="btn btn-sm btn-outline-secondary">' . $content . '</button>';
-		} else {
-			return '<button class="btn btn-sm btn-secondary" disabled>' . $label . '</button>';
-		}
-	}
-?>
-
-<div class="row">
-	<div class="col-6">
-		<?= paginationButton('First', $first); ?>
-		<?= paginationButton('Previous', $prev); ?>
-	</div>
-	<div class="col-6 d-flex justify-content-end">
-		<?= paginationButton('Next', $next); ?>
-		<?= paginationButton('Last', $last); ?>
-	</div>
+<div class="m-auto d-flex justify-content-center mt-3">
+	<?= $first, $prev, $next, $last ?>
 </div>
