@@ -1,12 +1,24 @@
 <?php
 
 	class PostsController extends AppController {
+
 		public $helpers = array('Html', 'Form', 'Flash');
+
 		public $components = array('Flash');
 
+		public $paginate = array(
+			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created'),
+			'conditions' => array(),
+			'limit' => 12,
+			'order' => array('Post.id' => 'asc')
+		);
+
 		public function index() {
-			$order = "Post.id asc";
-			$this->set('posts', $this->Post->find('all', compact('order')));
+//			$order = "Post.id asc";
+//			$this->set('posts', $this->Post->find('all', compact('order')));
+
+			$posts = $this->paginate();
+			$this->set('posts', $posts);
 		}
 
 		public function view($id) {

@@ -18,3 +18,15 @@ body {
 	border:1px solid rgba(255, 255, 255, 0.18);
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
+
+.card {
+	transition: box-shadow 0.3s;
+}
+
+.card:hover {
+	box-shadow: 0 0 20px rgba(10, 10, 10, 0.25);
+}
+
+a.card-posts {
+	text-decoration: none;
+}
