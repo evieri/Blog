@@ -15,7 +15,7 @@
 	<?php echo $this->Html->css('style.css'); ?>
 	<?php echo $this->fetch('css'); ?>
 </head>
-<body>
+<body style="font-family: Syne, sans-serif;">
 <!--==================== HEADER ====================-->
 <header class="header bg-white shadow fs-5">
 	<nav class="navbar p-4 navbar-expand-sm">
@@ -72,7 +72,7 @@
 						<input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
 						<label for="floatingPassword">Senha</label>
 					</div>
-					<small class="text-body-secondary">Não tem uma conta? <a href="#">Inscreva-se.</a></small>
+					<small class="text-body-secondary">Não tem uma conta? <a href="/users/add">Inscreva-se.</a></small>
 					<button class="w-100 mb-4 mt-3 btn btn-lg rounded-3 btn-primary" type="submit">Entrar</button>
 				</form>
 			</div>

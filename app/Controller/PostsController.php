@@ -9,7 +9,7 @@
 		public $paginate = array(
 			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created'),
 			'conditions' => array(),
-			'limit' => 12,
+			'limit' => 8,
 			'order' => array('Post.id' => 'asc')
 		);
 
