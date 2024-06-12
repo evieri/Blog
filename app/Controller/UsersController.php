@@ -14,7 +14,7 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				return $this->redirect('/');
 			}
-			$this->Flash->error(__('Invalid username or password, try again'));
+			$this->Flash->error('Credenciais inválidas, por favor, tente novamente.');
 		}
 	}
 
@@ -50,11 +50,11 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Flash->success(__('The user has been saved'));
+				$this->Flash->success('O usuário foi salvo.');
 				return $this->redirect(array('action' => 'index'));
 			}
 			$this->Flash->error(
-				__('The user could not be saved. Please, try again.')
+				__('Não foi possível salvar o usuário.')
 			);
 		}
 	}

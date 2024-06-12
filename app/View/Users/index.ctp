@@ -2,7 +2,7 @@
 <p><a href="/users/add" >Criar usuário</a></p>
 
 <?php
-$tHeader = array('Id', 'Nome', 'Ação', 'Data de criação');
+$tHeader = array('Id', 'Nome', 'Cargo' ,'Ação', 'Data de criação');
 $header = $this->Html->tableHeaders($tHeader);
 
 $body = '';
@@ -14,6 +14,7 @@ foreach ($users as $user):
 			$user['User']['username'],
 			array('action' => 'view', $user['User']['id'])
 		),
+		$user['User']['role'],
 		$this->Html->link(
 			'Editar',
 			array('action' => 'edit', $user['User']['id'])

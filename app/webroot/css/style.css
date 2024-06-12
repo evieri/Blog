@@ -30,3 +30,7 @@ body {
 a.card-posts {
 	text-decoration: none;
 }
+
+.btn a {
+	text-decoration: none;
+}

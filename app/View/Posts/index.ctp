@@ -12,8 +12,8 @@
 
 	<div class="dropdown">
 
-		<button type="button" class="btn btn-sm btn-outline-secondary"><a href="/posts/add" >Criar post</a></button>
-		<button type="button" class="btn btn-sm btn-outline-secondary m-1"><a href="/users/" >Usuários</a></button>
+		<button type="button" class="btn btn-sm btn-outline-secondary "><a class="link-underline link-underline-opacity-0" href="/posts/add" >Criar post</a></button>
+		<button type="button" class="btn btn-sm btn-outline-secondary m-1"><a class="link-underline link-underline-opacity-0" href="/users/" >Usuários</a></button>
 
 		<div class="btn-group" role="group">
 
