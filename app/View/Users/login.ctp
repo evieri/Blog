@@ -18,6 +18,7 @@
 						<input type="text" class="form-control rounded-3" name="data[User][username]" id="UserUsername" required="required" placeholder="" >
 						<label for="UserUsername">Usuário</label>
 					</div>
+
 					<div class="form-floating mb-3">
 						<input type="password" class="form-control rounded-3" name="data[User][password]" id="UserPassword" required="required" placeholder="">
 						<label for="floatingPassword">Senha</label>

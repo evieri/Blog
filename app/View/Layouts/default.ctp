@@ -54,6 +54,12 @@
 	</div>
 </div>
 <!--==================== MODAL LOGIN ====================-->
+
+<div class="users form">
+	<?php echo $this->Flash->render('auth'); ?>
+	<?php echo $this->Form->create('User'); ?>
+</div>
+
 <div style="backdrop-filter: blur(24px)" class="modal text-center fade" role="dialog" id="modalSignin">
 	<button type="button" class="btn-close m-auto mt-5 mb-5" data-bs-dismiss="modal"></button>
 	<div style="top: 5%; backdrop-filter: blur(50px)" class="modal-dialog" role="document">
@@ -63,17 +69,22 @@
 			</div>
 
 			<div class="modal-body p-4">
-				<form class="">
+				<form method="POST" action="/users/add">
+
 					<div class="form-floating mb-3">
-						<input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
-						<label for="floatingInput">Usuário</label>
+						<input type="text" class="form-control rounded-3" name="data[User][username]" id="UserUsername" required="required" placeholder="">
+						<label for="UserUsername">Usuário</label>
 					</div>
+
 					<div class="form-floating mb-3">
-						<input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword">Senha</label>
+						<input type="password" class="form-control rounded-3" name="data[User][password]" id="UserPassword" required="required" placeholder="">
+						<label for="UserPassword">Senha</label>
 					</div>
+
 					<small class="text-body-secondary">Não tem uma conta? <a href="/users/add">Inscreva-se.</a></small>
+
 					<button class="w-100 mb-4 mt-3 btn btn-lg rounded-3 btn-primary" type="submit">Entrar</button>
+
 				</form>
 			</div>
 		</div>
