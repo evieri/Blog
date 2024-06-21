@@ -1,7 +1,18 @@
-<h1>Add Post</h1>
-<?php
-	echo $this->Form->create('Post');
-	echo $this->Form->input('title');
-	echo $this->Form->input('body', array('rows' => '3'));
-	echo $this->Form->end('Postar');
-?>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	<h1>Adicionar Post</h1>
+
+</div>
+
+<form action="/posts/add" id="PostAddForm" method="post" accept-charset="utf-8" class="d-grid mx-auto col-6">
+	<div class="mb-3">
+		<label for="PostTitle" class="form-label">Título</label>
+		<input class="form-control" name="data[Post][title]" maxlength="50" type="text" id="PostTitle" required="required">
+	</div>
+	<div class="mb-5">
+		<label for="PostBody" class="form-label">Conteúdo</label>
+		<textarea class="form-control" name="data[Post][body]" rows="3" cols="30" id="PostBody" required="required"></textarea>
+	</div>
+	<div class="d-grid col-12">
+		<button type="submit" class="btn btn-primary btn-lg">Postar</button>
+	</div>
+</form>

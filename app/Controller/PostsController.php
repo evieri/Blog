@@ -13,12 +13,22 @@
 			'order' => array('Post.id' => 'asc')
 		);
 
-		public function index() {
+		public function index()
+		{
 //			$order = "Post.id asc";
 //			$this->set('posts', $this->Post->find('all', compact('order')));
 
+
+			if ($this->request->is('post') && !empty($this->request->data['Post']['title'])) {
+
+				$this->paginate['conditions']['Post.title LIKE'] = trim($this->request->data['Post']['title']) . '%';
+
+			}
+
 			$posts = $this->paginate();
 			$this->set('posts', $posts);
+
+
 		}
 
 		public function view($id) {

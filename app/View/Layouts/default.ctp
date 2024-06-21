@@ -16,13 +16,14 @@
 	<?php echo $this->fetch('css'); ?>
 </head>
 <body style="font-family: Syne, sans-serif;">
+
 <!--==================== HEADER ====================-->
-<header class="header bg-white shadow fs-5">
+<header class="header bg-white shadow fs-5" style="position: sticky; top: 0; z-index: 10">
 	<nav class="navbar p-4 navbar-expand-sm">
 
 		<!-- Logo -->
 		<div class="container">
-			<a href="/" class="navbar brand">Logo</a>
+			<a href="/" class="navbar brand">Blog do Mané</a>
 
 			<div class="navbar-nav">
 				<!-- Pesquisa -->
@@ -53,8 +54,8 @@
 		</div>
 	</div>
 </div>
-<!--==================== MODAL LOGIN ====================-->
 
+<!--==================== MODAL LOGIN ====================-->
 <div class="users form">
 	<?php echo $this->Flash->render('auth'); ?>
 	<?php echo $this->Form->create('User'); ?>
@@ -90,12 +91,12 @@
 		</div>
 	</div>
 </div>
+
 <!--==================== MAIN ====================-->
-<!--<img src="--><?php //echo $this->webroot; ?><!--img/bg-image.png" alt="" class="vh-100">-->
-<main class="container mt-4 p-4 pt-0 glass">
+<main class="container mt-4 p-4 pt-0 glass" style="min-height: calc(100vh - 7.5rem);">
 	<div>
-		<?php echo $this->Flash->render(); ?>
-		<?php echo $this->fetch('content'); ?>
+		<?= $this->Flash->render(); ?>
+		<?= $this->fetch('content'); ?>
 	</div>
 </main>
 

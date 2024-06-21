@@ -31,6 +31,10 @@ a.card-posts {
 	text-decoration: none;
 }
 
-.btn a {
+button a {
 	text-decoration: none;
+}
+
+#celula {
+	background-color: transparent;
 }
