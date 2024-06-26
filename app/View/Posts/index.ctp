@@ -91,7 +91,7 @@
 							$data = date('d M Y', $created); // Formata a data
 						?>
 
-						<h6>Por: <?= h($post['Post']['user_id']); ?></h6>
+						<h6>Por: <?= h($post['User']['name']); ?></h6>
 
 						<h6><i class="ri-time-line"></i> <?= $data ?></h6>
 

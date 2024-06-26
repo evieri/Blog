@@ -3,7 +3,8 @@
 
 body {
 	background-size: cover;
-	background: url("http://core.uz/assets/img/bg-image.png") no-repeat fixed center center;
+	/*background: url("http://core.uz/assets/img/bg-image.png") no-repeat fixed center center;*/
+	background-color: #F5FCFF;
 }
 
 .modal {

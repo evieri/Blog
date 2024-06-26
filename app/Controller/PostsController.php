@@ -7,10 +7,20 @@
 		public $components = array('Flash');
 
 		public $paginate = array(
-			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created'),
+			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created', 'User.name'),
 			'conditions' => array(),
 			'limit' => 8,
-			'order' => array('Post.id' => 'asc')
+			'order' => array('Post.id' => 'asc'),
+			'joins' => array(
+				array(
+					'table' => 'users',
+					'alias' => 'User',
+					'type' => 'INNER',
+					'conditions' => array(
+						'Post.user_id = User.id'
+					)
+				)
+			)
 		);
 
 		public function index()

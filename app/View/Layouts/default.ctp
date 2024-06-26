@@ -15,11 +15,12 @@
 	<?php echo $this->Html->css('style.css'); ?>
 	<?php echo $this->fetch('css'); ?>
 </head>
-<body style="font-family: Syne, sans-serif;">
+<body>
+<!--<body style="font-family: Syne, sans-serif;">-->
 
 <!--==================== HEADER ====================-->
-<header class="header bg-white shadow fs-5" style="position: sticky; top: 0; z-index: 10">
-	<nav class="navbar p-4 navbar-expand-sm">
+<header class="header bg-white" style="position: sticky; top: 0; z-index: 10">
+	<nav class="navbar navbar-expand-sm">
 
 		<!-- Logo -->
 		<div class="container">
@@ -27,10 +28,14 @@
 
 			<div class="navbar-nav">
 				<!-- Pesquisa -->
-				<i class="ri-search-line nav-link" id="search-btn" data-bs-toggle="modal" data-bs-target="#modalSearch"></i>
+				<i class="ri-search-line nav-link"></i>
 
 				<!-- Login -->
-				<i class="ri-user-line nav-link" data-bs-toggle="modal" data-bs-target="#modalSignin"></i>
+				<?php if (!empty($authUser)): ?>
+					<a href="/users/view/<?= $authUser['id'] ?>"><i class="ri-user-line nav-link"></i></a>
+				<?php else: ?>
+					<i class="ri-user-line nav-link"></i>
+				<?php endif; ?>
 
 				<!-- Sanduíche -->
 	<!--			<div class="nav__toggle" id="nav-toggle">-->
@@ -38,62 +43,12 @@
 	<!--			</div>-->
 			</div>
 		</div>
+
 	</nav>
 </header>
 
-<!--==================== MODAL SEARCH ====================-->
-<div class="modal fade" style="backdrop-filter: blur(24px)" id="modalSearch">
-	<div class="modal-dialog">
-		<div class="modal-content bg-transparent border-0">
-		<button type="button" class="btn-close mt-5 mb-5 m-auto" data-bs-dismiss="modal"></button>
-		<form class="container">
-			<div class="input-group">
-				<input type="text" class="form-control rounded-3 shadow" id="floatingInput" placeholder="O que você está procurando?">
-			</div>
-		</form>
-		</div>
-	</div>
-</div>
-
-<!--==================== MODAL LOGIN ====================-->
-<div class="users form">
-	<?php echo $this->Flash->render('auth'); ?>
-	<?php echo $this->Form->create('User'); ?>
-</div>
-
-<div style="backdrop-filter: blur(24px)" class="modal text-center fade" role="dialog" id="modalSignin">
-	<button type="button" class="btn-close m-auto mt-5 mb-5" data-bs-dismiss="modal"></button>
-	<div style="top: 5%; backdrop-filter: blur(50px)" class="modal-dialog" role="document">
-		<div class="modal-content rounded-4 shadow">
-			<div class="modal-header p-5 pb-4 border-bottom-0">
-				<h1 class="fw-bold mb-0 fs-3 m-auto">Faça Login</h1>
-			</div>
-
-			<div class="modal-body p-4">
-				<form method="POST" action="/users/add">
-
-					<div class="form-floating mb-3">
-						<input type="text" class="form-control rounded-3" name="data[User][username]" id="UserUsername" required="required" placeholder="">
-						<label for="UserUsername">Usuário</label>
-					</div>
-
-					<div class="form-floating mb-3">
-						<input type="password" class="form-control rounded-3" name="data[User][password]" id="UserPassword" required="required" placeholder="">
-						<label for="UserPassword">Senha</label>
-					</div>
-
-					<small class="text-body-secondary">Não tem uma conta? <a href="/users/add">Inscreva-se.</a></small>
-
-					<button class="w-100 mb-4 mt-3 btn btn-lg rounded-3 btn-primary" type="submit">Entrar</button>
-
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-
 <!--==================== MAIN ====================-->
-<main class="container mt-4 p-4 pt-0 glass" style="min-height: calc(100vh - 7.5rem);">
+<main class="container">
 	<div>
 		<?= $this->Flash->render(); ?>
 		<?= $this->fetch('content'); ?>
