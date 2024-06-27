@@ -1,9 +1,10 @@
 <?php
 
-	$first = $this->Paginator->first('<<', array('class' => 'btn btn-outline-secondary m-1'), '<<', array('class' => 'btn btn-secondary m-1'));
-	$prev = $this->Paginator->prev('Anterior', array('class' => 'btn btn-outline-secondary m-1'), 'Anterior', array('class' => 'btn btn-secondary m-1'));
-	$next = $this->Paginator->next('Próximo', array('class' => 'btn btn-outline-secondary m-1'), 'Próximo', array('class' => 'btn btn-secondary m-1'));
-	$last = $this->Paginator->last('>>', array('class' => 'btn btn-outline-secondary m-1'), '>>', array('class' => 'btn btn-secondary m-1'));
+	$first = $this->Paginator->first('«', ['class' => 'page-link']);
+	$last = $this->Paginator->last('»', ['class' => 'page-link']);
+	$counter = $this->Paginator->numbers(['class' => 'page-link', 'separator' => '<li class="page-item">', 'currentClass' => 'active']);
+	$prev = $this->Paginator->prev('«', ['class' => 'page-link'], '«', ['tag' => 'a', 'class' => 'page-link disabled']);
+	$next = $this->Paginator->next('»', ['class' => 'page-link'], '»', ['tag' => 'a', 'class' => 'page-link disabled']);
 
 ?>
 
@@ -66,58 +67,79 @@
 <!--	</div>-->
 </div>
 
-<!--==================== POSTS ====================-->
+<div class="row">
+	<div class="col-8">
 
-<div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
+		<!--==================== POSTS ====================-->
 
-	<?php foreach ($posts as $post): ?>
+		<div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4">
 
-	<div class="col mb-3" >
+			<?php foreach ($posts as $post): ?>
 
-		<a class="card-posts" href="/posts/view/<?= $post['Post']['id']; ?>">
+				<div class="col mb-3" >
 
-			<div class="card h-100 border-0">
+					<div class="card-posts">
 
-				<img src="https://www.collinsdictionary.com/images/full/skyblue_573262585_1000.jpg" class="card-img-top" alt="...">
+						<div class="card h-100 bg-transparent">
 
-				<div class="card-body">
+							<img style="max-height: 250px" src="https://www.collinsdictionary.com/images/full/skyblue_573262585_1000.jpg" class="card-img-top" alt="...">
 
-					<h5 class="card-title"><?= h($post['Post']['title']); ?></h5>
+							<div class="card-body">
 
-					<div class="card-subtitle mb-2 text-body-secondary d-flex justify-content-between">
+								<h5 class="card-title"><?= h($post['Post']['title']); ?></h5>
 
-						<?php
-							$created = strtotime($post['Post']['created']); // Converte a string para timestamp
-							$data = date('d M Y', $created); // Formata a data
-						?>
+								<div class="card-subtitle my-2 text-body-secondary d-flex justify-content-between">
 
-						<h6>Por: <?= h($post['User']['name']); ?></h6>
+									<?php
+									$created = strtotime($post['Post']['created']); // Converte a string para timestamp
+									$data = date('d M Y', $created); // Formata a data
+									?>
 
-						<h6><i class="ri-time-line"></i> <?= $data ?></h6>
+									<h6>Por: <?= h($post['User']['name']); ?></h6>
 
+									<h6><i class="ri-time-line"></i> <?= $data ?></h6>
+
+								</div>
+
+								<p class="card-text">
+
+									<?php
+									$body = h($post['Post']['body']);
+									echo mb_strimwidth($body, 0, 50, "...");
+									?>
+
+								</p>
+
+								<a class="stretched-link icon-link icon-link-hover" href="/posts/view/<?= $post['Post']['id']; ?>">
+									Ler mais
+									<svg class="bi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
+								</a>
+
+							</div>
+						</div>
 					</div>
-
-					<p class="card-text">
-
-						<?php
-							$body = h($post['Post']['body']);
-							echo mb_strimwidth($body, 0, 50, "...");
-						?>
-
-					</p>
 				</div>
-			</div>
-		</a>
+
+			<?php endforeach; ?>
+
+		</div>
 	</div>
+	<div class="col bg-primary">
 
-	<?php endforeach; ?>
-
+	</div>
 </div>
+
+
 
 
 
 <!--==================== PAGINATOR ====================-->
 
-<div class="m-auto d-flex justify-content-center mt-3">
-	<?= $first, $prev, $next, $last ?>
-</div>
+<nav class="m-auto d-flex justify-content-center mt-3">
+	<ul class="pagination">
+		<li class="page-item"><?=$prev?></li>
+		<li class="page-item"><?=$counter?></li>
+		<li class="page-item"><?=$next?></li>
+	</ul>
+</nav>
+

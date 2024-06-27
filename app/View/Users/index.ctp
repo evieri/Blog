@@ -74,7 +74,7 @@
 			<tr>
 				<td style="background-color: transparent"><?= $user['User']['id']; ?></td>
 				<td style="background-color: transparent">
-					<?= $this->Html->link($user['User']['username'],
+					<?= $this->Html->link($user['User']['name'],
 						array('action' => 'view', $user['User']['id'])); ?>
 				</td>
 				<td style="background-color: transparent"><?= $user['User']['role']; ?></td>
