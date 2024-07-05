@@ -8,79 +8,29 @@
 
 ?>
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
-	<h1>Posts</h1>
-
-	<!--==================== PESQUISA ====================-->
-	<div class="collapse ms-3 me-1 flex-grow-1" id="searchCollapse">
-
-		<form action="/posts/index" method="post" id="PostIndexForm">
-
-			<div class="input-group">
-				<input type="text" class="form-control form-control-sm border-secondary" id="PostTitle" name="data[Post][title]" placeholder="Pesquisar...">
-<!--				<button type="submit" class="btn btn-sm btn-outline-secondary"><i class="ri-search-line"> Buscar</i></button>-->
-			</div>
-
-		</form>
-
+<header class="py-5 border-bottom mb-4">
+	<div class="container">
+		<div class="text-center my-5">
+			<h1 class="fw-bolder">Bem vindo ao Blog do Mané!</h1>
+			<p class="lead mb-0">O melhor lugar para aprender front-end de forma totalmente gratuita</p>
+		</div>
 	</div>
+</header>
 
-	<div>
-		<button class="btn btn-sm btn-outline-secondary btn-group" data-bs-toggle="collapse" href="#searchCollapse"><i class="ri-search-line"></i></button>
-		<button type="button" class="btn btn-sm btn-outline-secondary"><a id="link" href="/posts/add"><i class="ri-add-circle-line"></i></a></button>
-		<button type="button" class="btn btn-sm btn-outline-secondary"><a id="link" href="/users/"><i class="ri-group-line"></i></a></button>
-
-
-		<span class="dropdown">
-
-			<div class="btn-group" role="group">
-
-				<button type="button" class="btn btn-sm btn-outline-secondary">
-					<i class="ri-calendar-line"></i>
-				</button>
-
-				<div class="btn-group" role="group">
-
-					<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
-						Tudo
-					</button>
-
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Essa semana</a></li>
-						<li><a class="dropdown-item" href="#">Esse mês</a></li>
-						<li><a class="dropdown-item" href="#">Esse ano</a></li>
-					</ul>
-
-				</div>
-
-			</div>
-
-		</span>
-
-	</div>
-<!--	<div class="btn-toolbar mb-2 mb-md-0">-->
-<!--		<button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">-->
-<!--			<i class="ri-calendar-line"></i>-->
-<!--			Tudo-->
-<!--		</button>-->
-<!--	</div>-->
-</div>
-
-<div class="row">
-	<div class="col-8">
+<div class="row mt-4 container mx-auto">
+	<div class="col-xl-8 col-lg-8">
 
 		<!--==================== POSTS ====================-->
 
-		<div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4">
+		<div class="row row-cols-1 row-cols-xl-2 row-cols-lg-2 g-4">
 
 			<?php foreach ($posts as $post): ?>
 
-				<div class="col mb-3" >
+				<div class="col mb-1" >
 
 					<div class="card-posts">
 
-						<div class="card h-100 bg-transparent">
+						<div class="card h-100">
 
 							<img style="max-height: 250px" src="https://www.collinsdictionary.com/images/full/skyblue_573262585_1000.jpg" class="card-img-top" alt="...">
 
@@ -104,8 +54,8 @@
 								<p class="card-text">
 
 									<?php
-									$body = h($post['Post']['body']);
-									echo mb_strimwidth($body, 0, 50, "...");
+										$body = h($post['Post']['body']);
+										echo mb_strimwidth($body, 0, 60, "...");
 									?>
 
 								</p>
@@ -123,23 +73,104 @@
 			<?php endforeach; ?>
 
 		</div>
+
+		<hr>
+
+		<!--==================== PAGINATOR ====================-->
+
+		<nav class="mx-auto d-flex justify-content-center my-3">
+			<ul class="pagination">
+				<li class="page-item"><?=$prev?></li>
+				<li class="page-item"><?=$counter?></li>
+				<li class="page-item"><?=$next?></li>
+			</ul>
+		</nav>
+
 	</div>
-	<div class="col bg-primary">
+
+	<div class="col">
+
+		<!--==================== PESQUISA ====================-->
+		<div class="card mb-4" style="position: sticky; top: 5rem; z-index: 10">
+
+			<div class="card-body">
+
+				<form action="/posts/index" method="post" id="PostIndexForm">
+
+					<div class="input-group">
+						<input type="text" class="form-control" id="PostTitle" name="data[Post][title]" placeholder="Pesquisar...">
+						<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split rounded-0" data-bs-toggle="collapse" data-bs-target="#collapse">
+						<button class="btn btn-secondary" type="submit"><i class="ri-search-line"></i></button>
+					</div>
+
+					<div class="collapse" id="collapse">
+						<div class="input-group mt-3">
+							<input name="data[Post][date1]" class="date-picker form-control" placeholder="Data Inicial" type="text" id="dataInicial" style="z-index: 11">
+							<input name="data[Post][date2]" class="date-picker form-control" placeholder="Data Final" type="text" id="dataFinal" style="z-index: 11">
+							<span class="input-group-text"><i class="ri-calendar-line"></i></span>
+						</div>
+
+						<div class="input-group mt-3">
+							<select name="data[Post][status]" class="form-select">
+								<option selected>Status...</option>
+								<option value="0">Ativo</option>
+								<option value="1">Inativo</option>
+							</select>
+							<span class="input-group-text"><i class="ri-checkbox-line"></i></span>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div class="card mb-4">
+
+			<div class="card-header">
+				Ações
+			</div>
+
+			<div class="card-body">
+
+				<a type="button" href="/posts/add" class="btn btn btn-outline-secondary me-2"><i class="ri-add-circle-line"></i></a>
+				<a type="button" href="/users/" class="btn btn btn-outline-secondary"><i class="ri-group-line"></i></a>
+
+			</div>
+
+		</div>
+
+		<div class="card">
+			<div class="card-header">
+				Categorias
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-sm-6">
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!">HTML</a></li>
+							<li><a href="#!">CSS</a></li>
+							<li><a href="#!">JavaScript</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-6">
+						<ul class="list-unstyled mb-0">
+							<li><a href="#!">Bootstrap</a></li>
+							<li><a href="#!">React</a></li>
+							<li><a href="#!">Angular</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 </div>
 
-
-
-
-
-<!--==================== PAGINATOR ====================-->
-
-<nav class="m-auto d-flex justify-content-center mt-3">
-	<ul class="pagination">
-		<li class="page-item"><?=$prev?></li>
-		<li class="page-item"><?=$counter?></li>
-		<li class="page-item"><?=$next?></li>
-	</ul>
-</nav>
-
+<script>
+	$(function() {
+		$.datepicker.setDefaults($.datepicker.regional[ "pt-BR" ]);
+		$("#dataInicial, #dataFinal").datepicker({
+			dateFormat: "dd/mm/yy"
+		});
+	});
+</script>

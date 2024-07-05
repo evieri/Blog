@@ -1,11 +1,6 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
 
-body {
-	background-size: cover;
-	/*background: url("http://core.uz/assets/img/bg-image.png") no-repeat fixed center center;*/
-	background-color: #F5FCFF;
-}
 
 .modal {
 	backdrop-filter: blur(24px);
@@ -20,11 +15,11 @@ body {
 	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.card {
+.card-posts {
 	transition: box-shadow 0.3s;
 }
 
-.card:hover {
+.card-posts:hover {
 	box-shadow: 0 0 20px rgba(10, 10, 10, 0.25);
 }
 
@@ -34,8 +29,4 @@ a.card-posts {
 
 button a {
 	text-decoration: none;
-}
-
-#celula {
-	background-color: transparent;
 }

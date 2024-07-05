@@ -7,9 +7,9 @@
 		public $components = array('Flash');
 
 		public $paginate = array(
-			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created', 'User.name'),
+			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created', 'Post.status' , 'User.name'),
 			'conditions' => array(),
-			'limit' => 8,
+			'limit' => 9,
 			'order' => array('Post.id' => 'asc'),
 			'joins' => array(
 				array(
@@ -33,6 +33,17 @@
 
 				$this->paginate['conditions']['Post.title LIKE'] = trim($this->request->data['Post']['title']) . '%';
 
+			}
+
+			// Filtro por datas
+			if (!empty($this->request->data['Post']['date1']) && !empty($this->request->data['Post']['date2'])) {
+				$startDate = DateTime::createFromFormat('d/m/Y', $this->request->data['Post']['date1']);
+				$endDate = DateTime::createFromFormat('d/m/Y', $this->request->data['Post']['date2']);
+
+				if ($startDate && $endDate) {
+					$this->paginate['conditions']['Post.created >='] = $startDate->format('Y-m-d') . ' 00:00:00';
+					$this->paginate['conditions']['Post.created <='] = $endDate->format('Y-m-d') . ' 23:59:59';
+				}
 			}
 
 			$posts = $this->paginate();
