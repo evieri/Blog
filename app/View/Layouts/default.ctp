@@ -60,9 +60,9 @@
 				<!-- Login -->
 				<?php if (!empty($authUser)): ?>
 
-				<span class="badge d-flex align-items-center p-1 pe-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
+				<a type="button" href="/users/view/<?= $authUser['id'] ?>" class="btn badge d-flex align-items-center p-1 pe-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
 					<img class="rounded-circle me-1" width="24" height="24" src="https://github.com/mdo.png" alt=""><?= $authUser['name'] ?>
-				</span>
+				</a>
 
 				<?php else: ?>
 					<i class="ri-user-line nav-link text-light"></i>

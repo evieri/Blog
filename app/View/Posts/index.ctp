@@ -32,7 +32,7 @@
 
 						<div class="card h-100">
 
-							<img style="max-height: 250px" src="https://www.collinsdictionary.com/images/full/skyblue_573262585_1000.jpg" class="card-img-top" alt="...">
+							<img style="max-height: 250px" src="https://pbs.twimg.com/media/GPwsi3fWoAIWsbc?format=jpg&name=small" class="card-img-top" alt="...">
 
 							<div class="card-body">
 
