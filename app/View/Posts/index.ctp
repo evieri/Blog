@@ -1,5 +1,7 @@
 <?php
 
+	$this->Paginator->options(['update' => '#content']);
+
 	$first = $this->Paginator->first('«', ['class' => 'page-link']);
 	$last = $this->Paginator->last('»', ['class' => 'page-link']);
 	$counter = $this->Paginator->numbers(['class' => 'page-link', 'separator' => '<li class="page-item">', 'currentClass' => 'active']);
@@ -8,7 +10,7 @@
 
 ?>
 
-<header class="py-5 border-bottom mb-4">
+<header class="py-5 border-bottom mb-4 bg-body-secondary">
 	<div class="container">
 		<div class="text-center my-5">
 			<h1 class="fw-bolder">Bem vindo ao Blog do Mané!</h1>
@@ -60,10 +62,12 @@
 
 								</p>
 
-								<a class="stretched-link icon-link icon-link-hover" href="/posts/view/<?= $post['Post']['id']; ?>">
-									Ler mais
-									<svg class="bi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>
-								</a>
+								<?= $this->Js->link('Ler mais', '/posts/view/' . $post['Post']['id'], ['update' => '#content', 'class' => 'stretched-link icon-link icon-link-hover']) ?>
+
+<!--								<a class="stretched-link icon-link icon-link-hover" href="/posts/view/--><?php //= $post['Post']['id'] ?><!--">-->
+<!--									Ler mais-->
+<!--									<svg class="bi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path></svg>-->
+<!--								</a>-->
 
 							</div>
 						</div>
@@ -174,3 +178,9 @@
 		});
 	});
 </script>
+
+<?php
+	if($this->request->is('ajax')) {
+		echo $this->Js->writeBuffer();
+	}
+?>

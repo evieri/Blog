@@ -16,8 +16,8 @@
 	<?php echo $this->fetch('css'); ?>
 
 	<!--=============== JQUERY UI ===============-->
+	<?= $this->Html->script('jquery-3.7.1.min.js') ?>
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 
 	<script>
@@ -52,7 +52,7 @@
 
 		<!-- Logo -->
 		<div class="container fs-5">
-			<a href="/" class="navbar brand text-light">Blog do Mané</a>
+			<?= $this->Html->link('Blog do Mané', '/', ['update' => '#content' ,'class' => 'navbar brand text-light']) ?>
 
 			<button class="btn btn-dark" onclick="toggleTheme()"><i id="themeIcon" class="ri-moon-clear-fill"></i></button>
 
@@ -79,11 +79,9 @@
 </header>
 
 <!--==================== MAIN ====================-->
-<main>
-	<div>
-		<?= $this->Flash->render(); ?>
-		<?= $this->fetch('content'); ?>
-	</div>
+<main id="content">
+	<?= $this->Flash->render(); ?>
+	<?= $this->fetch('content'); ?>
 </main>
 
 <footer class="py-5 bg-dark text-light">
@@ -93,10 +91,10 @@
 		echo $this->Html->script('main.js');
 		echo $this->Html->script('datepicker-pt-BR.js');
 		echo $this->fetch('script');
+		echo $this->Js->writeBuffer();
 	?>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 
 </footer>
 
