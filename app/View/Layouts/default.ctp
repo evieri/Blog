@@ -47,7 +47,7 @@
 <!--<body style="font-family: Syne, sans-serif;">-->
 
 <!--==================== HEADER ====================-->
-<header class="header border-bottom" style="position: sticky; top: 0; z-index: 10">
+<header class="header sticky-top">
 	<nav class="navbar navbar-expand-sm bg-dark">
 
 		<!-- Logo -->
@@ -79,7 +79,7 @@
 </header>
 
 <!--==================== MAIN ====================-->
-<main id="content">
+<main id="content" class="min-vh-100">
 	<?= $this->Flash->render(); ?>
 	<?= $this->fetch('content'); ?>
 </main>

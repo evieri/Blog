@@ -10,7 +10,7 @@
 
 ?>
 
-<header class="py-5 border-bottom mb-4 bg-body-secondary">
+<header style="background: url('https://images.unsplash.com/photo-1618397746666-63405ce5d015?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center; background-size: cover" class="py-5 border-bottom mb-4 bg-body-secondary">
 	<div class="container">
 		<div class="text-center my-5">
 			<h1 class="fw-bolder">Bem vindo ao Blog do Mané!</h1>
@@ -34,7 +34,7 @@
 
 						<div class="card h-100">
 
-							<img style="max-height: 250px" src="https://pbs.twimg.com/media/GPwsi3fWoAIWsbc?format=jpg&name=small" class="card-img-top" alt="...">
+							<img style="max-height: 250px" src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover" alt="...">
 
 							<div class="card-body">
 
@@ -99,12 +99,13 @@
 
 			<div class="card-body">
 
-				<form action="/posts/index" method="post" id="PostIndexForm">
+				<?= $this->Form->create('Post'); ?>
 
 					<div class="input-group">
 						<input type="text" class="form-control" id="PostTitle" name="data[Post][title]" placeholder="Pesquisar...">
-						<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split rounded-0" data-bs-toggle="collapse" data-bs-target="#collapse">
-						<button class="btn btn-secondary" type="submit"><i class="ri-search-line"></i></button>
+						<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split rounded-0" data-bs-toggle="collapse" data-bs-target="#collapse"></button>
+<!--						<button class="btn btn-secondary" type="submit"><i class="ri-search-line"></i></button>-->
+						<?= $this->Js->submit('Buscar', ['class' => 'btn btn-secondary rounded-end', 'update' => '#content']); ?>
 					</div>
 
 					<div class="collapse" id="collapse">
@@ -124,7 +125,7 @@
 						</div>
 					</div>
 
-				</form>
+				<?= $this->Form->end(); ?>
 			</div>
 		</div>
 
@@ -150,17 +151,17 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-sm-6">
-						<ul class="list-unstyled mb-0">
+						<ul class="list-unstyled">
 							<li><a href="#!">HTML</a></li>
 							<li><a href="#!">CSS</a></li>
 							<li><a href="#!">JavaScript</a></li>
 						</ul>
 					</div>
 					<div class="col-sm-6">
-						<ul class="list-unstyled mb-0">
+						<ul class="list-unstyled">
 							<li><a href="#!">Bootstrap</a></li>
 							<li><a href="#!">React</a></li>
-							<li><a href="#!">Angular</a></li>
+						<li><a href="#!">Angular</a></li>
 						</ul>
 					</div>
 				</div>
