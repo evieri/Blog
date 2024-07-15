@@ -79,7 +79,7 @@
 </header>
 
 <!--==================== MAIN ====================-->
-<main id="content" class="min-vh-100">
+<main id="content" class="min-vh-100 bg-body-tertiary">
 	<?= $this->Flash->render(); ?>
 	<?= $this->fetch('content'); ?>
 </main>

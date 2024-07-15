@@ -12,7 +12,7 @@
 
 <header style="background: url('https://images.unsplash.com/photo-1618397746666-63405ce5d015?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center; background-size: cover" class="py-5 border-bottom mb-4 bg-body-secondary">
 	<div class="container">
-		<div class="text-center my-5">
+		<div class="text-center my-5 text-dark">
 			<h1 class="fw-bolder">Bem vindo ao Blog do Mané!</h1>
 			<p class="lead mb-0">O melhor lugar para aprender front-end de forma totalmente gratuita</p>
 		</div>
@@ -26,13 +26,13 @@
 
 		<div class="row row-cols-1 row-cols-xl-2 row-cols-lg-2 g-4">
 
-			<?php foreach ($posts as $post): ?>
+			<?php foreach ($posts as $post):?>
 
 				<div class="col mb-1" >
 
 					<div class="card-posts">
 
-						<div class="card h-100">
+						<div class="card border-0 h-100">
 
 							<img style="max-height: 250px" src="https://images.unsplash.com/photo-1621839673705-6617adf9e890?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top object-fit-cover" alt="...">
 
@@ -43,8 +43,8 @@
 								<div class="card-subtitle my-2 text-body-secondary d-flex justify-content-between">
 
 									<?php
-									$created = strtotime($post['Post']['created']); // Converte a string para timestamp
-									$data = date('d M Y', $created); // Formata a data
+										$created = strtotime($post['Post']['created']); // Converte a string para timestamp
+										$data = date('d M Y', $created); // Formata a data
 									?>
 
 									<h6>Por: <?= h($post['User']['name']); ?></h6>

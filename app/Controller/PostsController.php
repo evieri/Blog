@@ -7,7 +7,7 @@
 		public $components = array('Flash');
 
 		public $paginate = array(
-			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created', 'Post.status' , 'User.name'),
+			'fields' => array('Post.id', 'Post.title', 'Post.user_id', 'Post.body', 'Post.created', 'Post.status' , 'User.name', 'User.surname'),
 			'conditions' => array(),
 			'limit' => 8,
 			'order' => array('Post.id' => 'asc'),
@@ -57,11 +57,16 @@
 				throw new NotFoundException(__('Invalid post'));
 			}
 
+			$posts = $this->paginate();
+			$this->set('posts', $posts);
+
 			$post = $this->Post->findById($id);
 			if (!$post) {
 				throw new NotFoundException(__('Invalid post'));
 			}
-			$this->set('post', $post);
+
+			$post = $this->paginate();
+			$this->set('post', $post[($id) - 1]);
 		}
 
 		public function add() {
