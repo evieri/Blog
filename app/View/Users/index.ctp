@@ -19,10 +19,10 @@
 		</div>
 	</div>
 
-	<div class="row m-4">
+	<div class="row my-4">
 		<div class="col-md-8">
 
-			<!--==================== POSTS ====================-->
+			<!--==================== USUÁRIOS ====================-->
 
 			<div class=" p-3 bg-body rounded border">
 				<table class="table table-hover">
@@ -127,3 +127,7 @@
 	</div>
 
 </div>
+
+<?php
+	$this->Js->buffer('$(".message").addClass("alert alert-danger alert-dismissible fade show container mt-4 ").attr("role", "alert").prepend(\'<i class="ri-alert-fill"> </i>\').append(\'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>\');');
+?>

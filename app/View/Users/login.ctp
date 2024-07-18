@@ -1,3 +1,7 @@
+<?php
+	$this->Js->buffer('$(".message error").addClass("alert alert-danger");');
+?>
+
 <div class="users form">
 	<?php echo $this->Flash->render('auth'); ?>
 	<?php echo $this->Form->create('User'); ?>
@@ -36,3 +40,7 @@
 	</div>
 
 </div>
+
+<?php
+	$this->Js->buffer('$(".message").addClass("alert alert-danger alert-dismissible fade show container mt-4 ").attr("role", "alert").prepend(\'<i class="ri-alert-fill"> </i>\').append(\'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>\');');
+?>

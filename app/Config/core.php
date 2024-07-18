@@ -228,6 +228,7 @@
  */
 	Configure::write('Session', array(
 		'defaults' => 'php',
+		'cookie' => 'blog',
 		'timeout' => 60,
 
 	));

@@ -12,7 +12,7 @@ class UsersController extends AppController {
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
-				return $this->redirect('/');
+				return $this->redirect($this->Auth->redirectUrl());
 			}
 			$this->Flash->error('Credenciais inválidas, por favor, tente novamente.');
 		}

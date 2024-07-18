@@ -43,7 +43,7 @@
 	</script>
 
 </head>
-<body>
+<body class="min-vh-100 d-flex flex-column">
 <!--<body style="font-family: Syne, sans-serif;">-->
 
 <!--==================== HEADER ====================-->
@@ -60,7 +60,7 @@
 				<!-- Login -->
 				<?php if (!empty($authUser)): ?>
 
-				<a type="button" href="/users/view/<?= $authUser['id'] ?>" class="btn badge d-flex align-items-center p-1 pe-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
+				<a type="button" href="/users/edit/<?= $authUser['id'] ?>" class="btn badge d-flex align-items-center p-1 pe-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
 					<img class="rounded-circle me-1" width="24" height="24" src="https://github.com/mdo.png" alt=""><?= $authUser['name'] ?>
 				</a>
 
@@ -79,12 +79,12 @@
 </header>
 
 <!--==================== MAIN ====================-->
-<main id="content" class="min-vh-100 bg-body-tertiary">
+<main id="content" class="bg-body-tertiary flex-fill">
 	<?= $this->Flash->render(); ?>
 	<?= $this->fetch('content'); ?>
 </main>
 
-<footer class="py-5 bg-dark text-light">
+<footer class="p-5 bg-dark text-light">
 
 	<?php
 		echo $this->element('sql_dump');
