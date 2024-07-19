@@ -84,7 +84,7 @@
 						<input type="text" class="form-control" id="UserTitle" name="data[User][title]" placeholder="Pesquisar...">
 						<button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split rounded-0" data-bs-toggle="collapse" data-bs-target="#collapse"></button>
 						<!--						<button class="btn btn-secondary" type="submit"><i class="ri-search-line"></i></button>-->
-						<?= $this->Js->submit('Buscar', ['class' => 'btn btn-secondary rounded-end', 'update' => '#content']); ?>
+						<?= $this->Js->submit('Buscar', ['class' => 'btn btn-secondary', 'update' => '#content']); ?>
 					</div>
 
 					<div class="collapse" id="collapse">
@@ -130,4 +130,34 @@
 
 <?php
 	$this->Js->buffer('$(".message").addClass("alert alert-danger alert-dismissible fade show container mt-4 ").attr("role", "alert").prepend(\'<i class="ri-alert-fill"> </i>\').append(\'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>\');');
+
+	$this->Js->buffer("
+		$('span.page-link').not('.active').each(function(){
+			var link = $(this).find('a');
+			var href = link.attr('href');
+			var id = link.attr('id');
+			var text = link.text();
+
+			var newLink = $('<a></a>', {
+				'class': 'page-link',
+				'href': href,
+				'id': id,
+				'text': text
+			});
+
+			$(this).replaceWith(newLink);
+		});
+	");
+
+	$this->Js->buffer('
+		$("div.submit").each(function() {
+			var $div = $(this);
+			var $input = $div.find("input[type=\'submit\']");
+
+			if ($input.length) {
+				$input.insertBefore($div);
+				$div.remove();
+			}
+		});
+	');
 ?>

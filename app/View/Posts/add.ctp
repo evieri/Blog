@@ -1,8 +1,10 @@
+<div class="container">
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 	<h1>Adicionar Post</h1>
 
 </div>
 
+<div>
 <?php
 	$options =  [
 		'class' => 'form-control',
@@ -25,7 +27,8 @@
 	echo $this->Form->input('id', ['type' => 'hidden']);
 	echo $this->Form->button('Postar', $button);
 ?>
-
+</div>
+</div>
 
 <!--<form action="/posts/add" id="PostAddForm" method="post" accept-charset="utf-8" class="d-grid mx-auto col-6">-->
 <!--	<div class="mb-3">-->
