@@ -10,6 +10,9 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
+
+		$this->layout = 'login';
+
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirectUrl());
@@ -86,10 +89,10 @@ class UsersController extends AppController {
 
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException(__('Usuário Inválido'));
 		}
 		if ($this->User->delete()) {
-			$this->Flash->success(__('User deleted'));
+			$this->Flash->success(__('Usuário removido com sucesso!'));
 			return $this->redirect(array('action' => 'index'));
 		}
 		$this->Flash->error(__('User was not deleted'));

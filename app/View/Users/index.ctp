@@ -129,7 +129,7 @@
 </div>
 
 <?php
-	$this->Js->buffer('$(".message").addClass("alert alert-danger alert-dismissible fade show container mt-4 ").attr("role", "alert").prepend(\'<i class="ri-alert-fill"> </i>\').append(\'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>\');');
+	$this->Js->buffer('$(".success").addClass("alert alert-success alert-dismissible fade show container mt-4 ").attr("role", "alert").prepend(\'<i class="ri-checkbox-circle-fill"> </i>\').append(\'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>\');');
 
 	$this->Js->buffer("
 		$('span.page-link').not('.active').each(function(){

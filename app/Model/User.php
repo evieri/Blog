@@ -9,13 +9,19 @@ class User extends AppModel {
 		'username' => array(
 			'required' => array(
 				'rule' => 'notBlank',
-				'message' => 'A username is required'
+				'message' => 'Informe um nome de usuário'
 			)
 		),
 		'password' => array(
 			'required' => array(
 				'rule' => 'notBlank',
-				'message' => 'A password is required'
+				'message' => 'Informe uma senha'
+			)
+		),
+		'login' => array(
+			'isUnique' => array(
+				'rule' => 'isUnique',
+				'message' => 'Login já existe'
 			)
 		),
 		'role' => array(
@@ -29,7 +35,7 @@ class User extends AppModel {
 
 	public function beforeSave($options = array()) {
 		if (isset($this->data[$this->alias]['password'])) {
-			$passwordHasher = new SimplePasswordHasher();
+			$passwordHasher = new SimplePasswordHasher(array('hashType' => 'sha256'));
 			$this->data[$this->alias]['password'] = $passwordHasher->hash(
 				$this->data[$this->alias]['password']
 			);
